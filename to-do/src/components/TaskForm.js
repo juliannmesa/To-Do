@@ -1,11 +1,12 @@
 import React from 'react';
 import Task from './Task';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class TaskForm extends React.Component {
     
     constructor(props) {
       super(props);
-      this.state = {value: '', taskList: ['Sacar basura', 'hacer compras', 'pasear perro']};
+      this.state = {value: '', taskList: []};
       //should implement dictionaries rather than plain lists for this ( to delete per id rather than per content)
      
       
@@ -28,7 +29,7 @@ class TaskForm extends React.Component {
 
     render() {
       return (
-        <div>
+        <div class='form-group'>
         <form onSubmit={this.handleSubmit}>
           <label>
             Tarea:
@@ -42,10 +43,11 @@ class TaskForm extends React.Component {
         <ul>
         
         {this.state.taskList.map(item => (
-          <Task>{item}<button onClick={() => this.setState({taskList: this.state.taskList.filter(val => val != item)})}>delete</button></Task>
+          <Task>{item} <span></span><button onClick={() => this.setState({taskList: this.state.taskList.filter(val => val != item)})}>delete</button></Task>
         ))}
         </ul>
         </div>
+        <button onClick={()=>{}}>Save</button>
         </div>
       );
     }

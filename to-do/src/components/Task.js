@@ -1,4 +1,5 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Task extends React.Component {
   constructor(props) {
@@ -11,18 +12,15 @@ class Task extends React.Component {
 
   updateReview = () => {
     this.setState({ selected: !this.state.selected });
-    this.setState({ textDecorationLine: "line-through" });
+    //this.setState({ textDecorationLine: "line-through" });
   };
 
   render() {
     return (
-      <li class="task">
-        <div
-          style={this.state.selected ? {textDecorationLine: "line-through"} : {textDecorationLine: ""}}
-          onClick={() => this.updateReview()}
-        >
+      <li class="task"
+          style={this.state.selected ? {textDecorationLine: "line-through"} : {textDecorationLine: ""}} //add as much behaviour as you want
+          onClick={() => this.updateReview()}>
           {this.props.children}
-        </div>
       </li>
     );
   }
